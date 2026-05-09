@@ -220,15 +220,6 @@ dist/
 ng build --prod
 ```
 
----
-
-# 🌐 Versión Online
-
-También puedes utilizar la versión hospedada oficialmente:
-
-```bash
-https://music.auddly.app
-```
 
 ---
 
