@@ -1,0 +1,145 @@
+<app-header [sticky]="false">
+
+	<div header-title>
+		Dashboard
+	</div>
+
+	<div class="actions" header-actions>
+
+		<div class="action" [dropdownPosition]="{
+			originX: 'end',
+			originY: 'bottom',
+			overlayX: 'end',
+			overlayY: 'top',
+			offsetY: 0,
+			offsetX: 0
+		}" [dropdownTriggerFor]="dropdown" appRipple>
+			<i class="ph-gear-six"></i>
+		</div>
+	</div>
+	<app-dropdown #dropdown [width]="300">
+		<div (click)="playerService.onEndless()" class="dropdown-item">
+			<div>
+
+				{{ (playerService.$endless | async) ? 'Disable' :
+				'Enable' }} Endless Mode
+				<div><small>Continue playing random songs from your library once your queue reaches the end.</small>
+				</div>
+			</div>
+			<i class="ph-infinity"></i>
+		</div>
+
+		<div class="dropdown-item" (click)="onUpload()" appRipple>
+			Upload
+			<i class="ph-upload"></i>
+		</div>
+
+		<div class="dropdown-item" (click)="onUsers()" appRipple>
+			Manage Listeners
+			<i class="ph-headphones"></i>
+		</div>
+		<div (click)="theme.onToggle()" class="dropdown-item">
+			<app-theme-toggle style="display: none;" #theme></app-theme-toggle>
+			{{ theme.themeService.theme === 'dark' ? 'Light' : 'Dark' }}
+
+			<i *ngIf="theme.themeService.theme === 'dark'" class="ph-sun-dim"></i>
+			<i *ngIf="theme.themeService.theme !== 'dark'" class="ph-moon"></i>
+		</div>
+
+
+		<div class="divider no-margin"></div>
+
+
+		<div (click)="onLogout()" class="dropdown-item">Logout <i class="ph-sign-out"></i>
+		</div>
+	</app-dropdown>
+</app-header>
+
+
+<div class="search-toolbar">
+	<input (click)="onSearch()" autocomplete="off" class="search-input" type="text"
+		placeholder="Search Music, Albums, Tracks" />
+</div>
+
+
+<div class="bubbles">
+	<div class="bubble card">
+		<h1>{{ data?.server?.tracks || 0 }}</h1>
+		<p>Tracks</p>
+	</div>
+
+	<div class="bubble card">
+		<h1>{{ data?.server?.albums || 0 }}</h1>
+		<p>Albums</p>
+	</div>
+
+	<div class="bubble card">
+		<h1>{{ data?.server?.artists || 0 }}</h1>
+		<p>Artists</p>
+	</div>
+
+	<div class="bubble card">
+		<h1>{{ data?.server?.size | size }}</h1>
+		<p>Size</p>
+	</div>
+</div>
+
+
+<div class="rows">
+
+	<div class="card">
+		<h3>Total Streams</h3>
+		<canvas style="height: 300px; max-height: 300px !important;" id="streams"></canvas>
+
+	</div>
+
+
+
+
+</div>
+
+
+
+<div class="data">
+	<div class="card">
+		<h3>Top 5 Albums</h3>
+		<div class="charts">
+
+			<canvas id="albums"></canvas>
+
+			<div (click)="onAlbum(album.album._id)" class="bar" *ngFor="let album of data?.albums; let i = index;">
+
+				<div class="label">{{ album?.album?.name }}</div>
+				<div class="count">{{ album.playcount }} Streams</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="card">
+		<h3>Top 5 Tracks</h3>
+		<div class="charts">
+			<canvas id="tracks"></canvas>
+
+			<div class="bar" *ngFor="let track of data?.tracks; let i = index">
+
+				<div class="label">{{ track?.track?.name }}</div>
+				<div class="count">{{ track.playcount }} Streams</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<h3>Most played artists</h3>
+
+		<div class="bub">
+			<div (click)="onArtist(artist._id)" class="bubble" *ngFor="let artist of data.artists">
+				<img [width]="100 - (100 / artist.playcount) || 50" [height]="100 - (100 / artist.playcount) || 50"
+					src="{{ artist.picture }}" />
+
+				<div class="text">{{ artist.name }}</div>
+			</div>
+		</div>
+
+	</div>
+</div>

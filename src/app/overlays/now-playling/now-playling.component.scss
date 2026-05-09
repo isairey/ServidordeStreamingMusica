@@ -1,0 +1,144 @@
+.player {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    &.mini {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+
+        @media screen and (max-width: 1000px) {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        padding-bottom: 70px;
+        width: 100vw;
+        overflow: auto;
+        grid-template-columns: 1fr auto;
+
+    }
+
+    &-track {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        grid-row-start: 1;
+        cursor: pointer;
+
+        @media screen and (min-width: 1000px) {}
+
+        .image {
+            display: grid;
+            place-content: center;
+
+            @media screen and (max-width: 1000px) {
+                display: none;
+            }
+
+            img {
+                border-radius: 15px;
+                aspect-ratio: 1;
+                object-fit: cover;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .track {
+            @media screen and (max-width: 1000px) {
+
+                max-width: 170px;
+                overflow: auto;
+            }
+
+            h1 {
+                line-height: 1.2;
+                margin: 0px;
+                white-space: nowrap;
+
+                overflow: auto;
+                display: flex;
+                font-size: 1rem;
+            }
+
+            p {
+                margin: 0px;
+                white-space: nowrap;
+
+                overflow: auto;
+                display: flex;
+            }
+        }
+    }
+
+    &-controls {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        justify-content: flex-end;
+        gap: 1rem;
+
+        button {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            min-height: 30px;
+            // background-color: transparent;
+
+            display: grid;
+            place-content: center;
+
+            &:hover {
+                // color: var(--foregorund-color);
+            }
+
+
+            // hide 1st, and last button when on mobile
+
+            &:nth-child(1) {
+                @media screen and (max-width: 1000px) {
+                    display: none;
+                }
+            }
+
+            &:nth-child(5) {
+                @media screen and (max-width: 1000px) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &-progress {
+
+        min-width: 260px;
+
+        grid-row-start: 2;
+
+        @media screen and (max-width: 1000px) {
+            display: none;
+        }
+
+        grid-area: progress;
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 1rem;
+        align-items: center;
+        margin: 1rem 0px;
+        grid-column: span 3;
+
+
+        .time {
+            opacity: 0.5;
+            font-size: 0.8rem;
+            width: 30px;
+        }
+
+    }
+
+}

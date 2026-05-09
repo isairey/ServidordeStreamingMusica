@@ -1,0 +1,39 @@
+.panel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 15px;
+    margin: 15px 0;
+
+    i {
+        font-size: 1.5rem;
+        margin-right: 15px;
+    }
+
+    &.default {
+        background: var(--border-color);
+
+    }
+
+    &.warning {
+        background: #ff6969;
+        color: white;
+    }
+
+    &.success {
+        background: #92f19f;
+        color: black;
+    }
+
+    &.info {
+        background: #3049d1;
+        color: white;
+    }
+
+    button {
+        background-color: white;
+        color: var(--accent-color);
+    }
+
+}

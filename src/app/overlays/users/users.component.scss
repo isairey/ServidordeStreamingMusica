@@ -1,0 +1,102 @@
+.card {
+    margin: 0 1rem;
+}
+
+.users {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-rows: masonry;
+    /* this will do the magic */
+    grid-gap: 1rem;
+    padding: 1rem;
+
+    .user {
+        position: relative;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 15px;
+
+        .avatar {
+            margin: 0 auto;
+        }
+
+        img {
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all ease-in-out .3s;
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        &:hover {
+            background-color: var(--background-color-3);
+        }
+
+
+    }
+}
+
+
+.table {
+    a {
+        text-decoration: none;
+
+        .text-meta {
+            font-size: 12px;
+        }
+    }
+}
+
+.members {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    .member {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 5px;
+        transition: all ease-in-out 0.2s;
+
+        .picture {
+            padding: 15px;
+            justify-content: center;
+            margin-right: -15px;
+
+        }
+
+        .name {
+            flex-grow: 1;
+            padding: 15px;
+
+        }
+
+        .role {
+            padding: 15px;
+
+        }
+
+        .actions {
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+
+            i {
+                font-size: 1.5rem;
+            }
+        }
+
+        &:hover {
+            // box-shadow: 0 5px 15px 0px rgb(0 0 0 / 20%);
+            background-color: var(--border-primary);
+            // cursor: pointer;
+        }
+    }
+}

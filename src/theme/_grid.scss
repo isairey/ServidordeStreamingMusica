@@ -1,0 +1,97 @@
+/*.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 1rem;
+
+    @media (max-width: 350px) {
+        grid-gap: 0rem;
+    }
+}
+*/
+$columns: 12;
+$base-gutter: 1rem;
+
+@function bp($bp) {
+    @return map-get($breakpoints, $bp);
+}
+
+$breakpoint-m: 48em;
+$breakpoints: (na: 0px,
+    // For BS grid
+    xs: 320px,
+    // Smartphone
+    sm: 600px,
+    // Tablets
+    md: 900px,
+    // Tablets Landscape and small desktops
+    lg: 1200px,
+    // Desktops
+    xl: 1800px,
+    // Large Desktop
+);
+
+@mixin gridset($bp) {
+
+    @for $i from 1 through $columns {
+        .width-#{$i}\@#{$bp} {
+            max-width: calc($i / $columns)
+        }
+    }
+
+    .width-expand\@#{$bp} {
+        flex: 1;
+        min-width: 1px;
+    }
+
+    .width-auto\@#{$bp} {
+        width: auto !important;
+    }
+}
+
+.grid {
+    [class*="width-"] {
+        width: 100%;
+    }
+
+    @media (min-width: bp(sm)) {
+        display: flex;
+        box-sizing: border-box;
+        gap: 1rem;
+
+        >* {
+            box-sizing: border-box;
+        }
+    }
+
+    &.equal {
+        >* {
+            flex: 1;
+        }
+    }
+
+    &.collapse {
+        gap: 0;
+
+        >* {}
+    }
+}
+
+@media (min-width: bp(xs)) {
+    @include gridset('xs');
+}
+
+@media (min-width: bp(sm)) {
+    @include gridset('sm');
+}
+
+@media (min-width: bp(md)) {
+    @include gridset('md');
+}
+
+@media (min-width: bp(lg)) {
+    @include gridset('lg');
+}
+
+@media (min-width: bp(xl)) {
+    @include gridset('xl');
+}

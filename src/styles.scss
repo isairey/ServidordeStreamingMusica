@@ -1,0 +1,457 @@
+@use '@angular/cdk';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700;800;900&display=swap');
+;
+
+@import "~@angular/cdk/overlay-prebuilt.css";
+
+@import "./theme/base.scss";
+
+root,
+html[data-theme="light"] {
+    --accent-color: #1e87f0; //#2f49d1;
+
+    //--accent-color: #000;
+    --white: #ffffff;
+    --black: #000000;
+
+    --background-color: #ffffff;
+    --background-color-2: #F4F6FA; //#fcfcfc;
+    --background-color-3: #f9f9f9;
+    --background-color-4: #fff;
+    --background-color-5: #fff;
+    --background-color-6: #efefef;
+    --background-color-7: #fafafa;
+    --background-color-8: #f1f5f8;
+    --input-color: #181818;
+
+    --border-color: #eeeeee;
+    --highlight-color: #2d63e9;
+
+    --text-color: #131517;
+
+    --ripple-color: rgba(0, 0, 0, 0.2);
+    --hover-primary: #f6f6f6;
+    --box-shadow-card: transparent;
+
+
+
+    --syso-cart-toggle-position: absolute !important;
+}
+
+html[data-theme="dark"] {
+    --accent-color: #1e87f0; //#2f49d1;
+
+    // --accent-color: #8bc34a;
+    --white: #000000;
+    --black: #ffffff;
+    --background-color: #17181a;
+    --background-color-2: #0e0e0e;
+    --background-color-3: #202020;
+    --background-color-4: #17181a;
+    --background-color-5: #151617;
+    --background-color-6: #171717;
+    --background-color-7: #151617;
+    --background-color-8: #17181a;
+
+    --border-color: #26292c;
+    --highlight-color: #2d63e9;
+    --input-color: #fff;
+    --text-color: #f7f7f9;
+    --ripple-color: rgba(255, 255, 255, 0.7);
+    --hover-primary: #2e2e2e;
+    --box-shadow-card: var(--border-color);
+
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    scrollbar-width: none;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: rgb(24, 24, 24);
+}
+
+::-webkit-scrollbar {
+    display: none; // Safari and Chrome
+}
+
+/*
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+*/
+
+
+input,
+input:before,
+input:after {
+    -webkit-user-select: initial;
+    -khtml-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
+}
+
+html,
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    // height: var(--app-height);
+    // min-height: calc(100% + env(safe-area-inset-top));
+    padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
+}
+
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+input,
+button,
+textarea,
+:focus {
+    outline: none; // You should add some other style for :focus to help UX/a11y
+}
+
+input,
+select,
+textarea {
+    //background-color: var(--background-color-2) !important;
+    //color: var(--foreground-color) !important;
+    //box-shadow: none !important;
+    //border: 1px solid var(--border-color) !important;
+}
+
+* {
+    &:focus {
+        outline: none;
+    }
+
+    font-family: 'Inter',
+    sans-serif;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    // border-bottom: 1px dashed;
+
+    &:focus,
+    &:hover {
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+    align-items: center;
+
+    @media all and (max-width: 1000px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+
+    }
+
+    .title {
+        flex-grow: 1;
+
+        @media all and (max-width: 1000px) {
+            margin-bottom: 15px;
+
+
+        }
+
+        h1 {
+            margin: 0;
+            line-height: 1.2;
+            //font-weight: 500;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin: 0px;
+
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+}
+
+p {
+    // color: #7c7c7c;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+
+    text-decoration: underline;
+
+
+    &:focus,
+    &:hover {
+        color: var(--text-action);
+        cursor: pointer;
+        // text-decoration: none;
+    }
+}
+
+.transformer {
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+}
+
+.cdk-overlay-backdrop {
+    background-color: rgba(0, 0, 0, 0.76);
+}
+
+.lazyload {
+    transition: opacity 1s;
+    opacity: 0;
+    object-fit: cover;
+}
+
+.ng-lazyloaded {
+    opacity: 1;
+}
+
+[placeholder]:not(input):empty::before {
+    content: attr(placeholder);
+    color: #555;
+}
+
+[placeholder]:empty:focus::before {
+    content: "";
+}
+
+.lazyload {
+    transition: opacity 1s;
+    opacity: 0;
+    object-fit: cover;
+}
+
+.ng-lazyloaded {
+    opacity: 1;
+}
+
+.highlight {
+    font-size: 2.7rem;
+    color: var(--text-color);
+    font-weight: 600;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+}
+
+.container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+@media all and (max-width: 1000px) {
+    .container {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}
+
+span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform, opacity;
+    transform: scale(0);
+    border-radius: 15px;
+    animation: ripple 600ms linear;
+    background-color: var(--ripple-color);
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideY {
+    0% {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+}
+
+@keyframes slideX {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+}
+
+@keyframes slideXLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(300px);
+    }
+
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fadeInShow {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.dropdown-item {
+    padding: 15px;
+
+    &:first-of-type {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    &:last-of-type {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--border-color);
+    }
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 1000;
+    padding: 10px;
+    background-color: #18181b;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.2;
+    // white-space: nowrap;
+
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px 0px;
+    animation: fadeInShow 0.3s;
+
+    visibility: hidden;
+    opacity: 0;
+    // transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out,
+    //     transform 0.1s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    pointer-events: none;
+
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+[data-tooltip]:hover {
+    position: relative;
+}
+
+[data-tooltip]:hover:after {
+    background-color: #000000;
+    border-radius: 5px;
+
+    color: #ffffff;
+    content: attr(data-tooltip);
+
+    margin-bottom: 10px;
+    bottom: calc(100% + 5px);
+    left: 0;
+    padding: 7px 12px;
+    position: absolute;
+    width: auto;
+    min-width: 50px;
+    max-width: 300px;
+    line-height: 1.5;
+    white-space: nowrap;
+    z-index: 9999;
+    animation: fadeInShow 0.1s;
+
+}

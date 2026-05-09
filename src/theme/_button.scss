@@ -1,0 +1,117 @@
+button {
+
+    transition-duration: .15s;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    font: inherit;
+    line-height: 1;
+    background-color: var(--background-color-3);
+    border: 0px solid var(--black);
+    color: var(--black);
+    padding: 0.5em 1em;
+    border-radius: 6px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 44px;
+    // font-size: .85rem;
+    box-shadow: rgba(17, 17, 18, 0.04) 0 2px 4px, rgba(19, 20, 20, 0.06) 0 1px 1px;
+
+    white-space: nowrap;
+
+    &:hover {
+        background-color: var(--black);
+        color: var(--white);
+        cursor: pointer;
+    }
+
+    i {
+        font-size: 1.5rem;
+    }
+
+    &.block {
+        width: 100%;
+        justify-content: center;
+    }
+
+    &.transparent {
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+
+        &:hover {
+            background-color: var(--black);
+            color: var(--white);
+        }
+    }
+
+    &.danger {
+        border-color: #f19292;
+        color: white;
+        background-color: #ff5252;
+
+        &:hover {
+            background-color: #ff5252;
+            color: white;
+        }
+    }
+
+    &.primary {
+        border-color: var(--accent-color);
+        color: white;
+        background-color: var(--accent-color);
+
+        &:hover {
+            background-color: var(--accent-color);
+
+            // background-color: #ff5252;
+            color: white;
+        }
+    }
+
+    &.white {
+        border-color: var(--background-color-3);
+        color: var(--black);
+        background-color: var(--background-color-3);
+
+        &:hover {
+            // background-color: #ff5252;
+
+        }
+    }
+
+
+
+    &.cyan {
+        background-color: #2cb3b8;
+        color: #fff;
+
+        &:hover {
+            background-color: #269da1;
+            color: white;
+        }
+    }
+
+    &.blue {
+        background-color: #00adef;
+        color: #fff;
+
+        &:hover {
+            background-color: #0892c8;
+            color: white;
+        }
+    }
+
+
+    &.black {
+        background-color: black;
+        color: #fff;
+
+        &:hover {
+            background-color: black;
+            color: var(--accent-color);
+        }
+    }
+}

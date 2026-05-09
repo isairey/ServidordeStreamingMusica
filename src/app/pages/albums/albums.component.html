@@ -1,0 +1,44 @@
+<app-header [absolute]="true" title="Albums">
+	<div header-title>
+		Albums
+	</div>
+	<div header-actions class="actions">
+
+		<div (click)="grid = !grid" appRipple class="action">
+
+
+			<i *ngIf="grid" class="ph-squares-four"></i>
+			<i *ngIf="!grid" class="ph-list"></i>
+
+		</div>
+
+		<div appRipple class="action" [dropdownTriggerFor]="dropdown">
+
+
+			<i class="ph-funnel"></i>
+		</div>
+	</div>
+	<app-dropdown #dropdown>
+		<div class="dropdown-item" (click)="onSort('name')">Sort by name</div>
+		<div class="dropdown-item" (click)="onSort('created_at')">Sort by date</div>
+	</app-dropdown>
+</app-header>
+
+
+
+
+
+<div *ngIf="albums.length > 0" appInfiniteScroll [scrollPercent]="70" [immediateCallback]="true"
+	[scrollCallback]="scrollCallback" class="albums {{ grid ? '' : 'list' }}">
+
+
+	<ng-container *ngFor="let album of albums; ">
+		<div appRipple (click)="onAlbum(album._id)" class="album">
+			<img class="lazyload" [lazyLoad]="album.picture || '/assets/app-icon-text.png'" />
+			<div class="column-details">
+				<div class="title">{{ album.name }}</div>
+				<div class="subtitle">{{ album.artist.name }}</div>
+			</div>
+		</div>
+	</ng-container>
+</div>

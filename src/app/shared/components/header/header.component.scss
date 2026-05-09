@@ -1,0 +1,167 @@
+.header {
+    position: sticky;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    //height: calc(env(safe-area-inset-top) + 60px);
+    padding-top: env(safe-area-inset-top);
+    width: 100%;
+    z-index: 10;
+    top: 0px;
+    height: 70px;
+
+    &.not-sticky {
+        position: relative;
+    }
+
+    &.collapse {
+        gap: 0;
+
+        .title {
+            padding: 0px;
+        }
+    }
+
+    &.transparent {
+        background-color: transparent;
+    }
+
+    .back {
+        padding: 15px;
+        background-color: transparent;
+        border: none;
+        color: var(--text-color);
+        display: flex;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        div {
+            display: grid;
+            place-content: center;
+        }
+    }
+
+    .title {
+        flex-grow: 1;
+        padding: 0 1rem; // font-family: Open Sans, sans-serif;
+        font-weight: 600;
+        //text-transform: uppercase;
+        //font-size: 1rem;
+        font-size: 2em;
+        margin: 0.2em 0;
+
+        @media screen and (max-width: 1000px) {
+            //font-size: 1.2rem;
+            //margin: 0.8rem 0;
+            margin: 0.5rem 0;
+        }
+    }
+
+    ::ng-deep {
+        .actions {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            padding-right: 1rem;
+
+            .action {
+                display: grid;
+                place-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+
+                i {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+
+.filler {
+    padding-top: calc(env(safe-area-inset-top) + 60px);
+}
+
+
+.app-toolbar {
+    position: fixed;
+    background-color: var(--background-color);
+    // box-shadow: 0 2px 4px rgb(0 0 0 / 6%);
+    top: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 6;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: row;
+    padding-top: 0;
+    box-shadow: 0 3px 3px 0 rgb(0 0 0 / 5%), 0 5px 15px 0 rgb(0 0 0 / 5%);
+    align-items: center;
+    gap: 1rem;
+
+    &.ios-fix {
+        height: calc(env(safe-area-inset-top) + 60px);
+        padding-top: env(safe-area-inset-top);
+    }
+
+    &.transparent {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    &.static {
+        position: static;
+    }
+
+    &.absolute {
+        position: absolute;
+        top: 0px;
+    }
+
+    &.sticky {
+        position: sticky;
+        top: 0px;
+    }
+
+    .back {
+        padding: 15px;
+        background-color: transparent;
+        border: none;
+        color: var(--text-primary);
+        display: flex;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        div {
+            display: grid;
+            place-content: center;
+        }
+    }
+
+    .title {
+        font-size: 1.2rem;
+        padding: 0px 15px;
+        flex-grow: 1;
+    }
+
+    .actions {
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.filler {
+    padding-top: calc(env(safe-area-inset-top) + 60px);
+}

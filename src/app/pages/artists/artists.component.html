@@ -1,0 +1,30 @@
+<app-header [sticky]="true" [transparent]="true" title="Albums">
+	<div header-title>
+		Artists
+	</div>
+	<div header-actions class="actions">
+
+		<div (click)="grid = !grid" appRipple class="action">
+
+			<i *ngIf="grid" class="ph-squares-four"></i>
+			<i *ngIf="!grid" class="ph-list"></i>
+
+		</div>
+
+
+	</div>
+</app-header>
+
+<div *ngIf="artists.length > 0" appInfiniteScroll [scrollPercent]="70" [immediateCallback]="true"
+	[scrollCallback]="scrollCallback" class="albums {{ grid ? '' : 'list' }}">
+
+
+	<ng-container *ngFor="let artist of artists; ">
+		<div appRipple (click)="onArtist(artist._id)" class="album">
+			<img class="lazyload" [lazyLoad]="artist.picture || '/assets/app-icon-text.png'" />
+			<div class="column-details">
+				<div class="title">{{ artist.name }}</div>
+			</div>
+		</div>
+	</ng-container>
+</div>

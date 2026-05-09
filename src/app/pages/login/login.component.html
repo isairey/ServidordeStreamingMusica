@@ -1,0 +1,34 @@
+<div class="connect">
+	<div class="window">
+		<div class="logo">
+			<img src="/assets/app-icon-text.png" />
+		</div>
+
+		<div class="highlight-text">Connect to your Auddly server</div>
+		<div *ngIf="error" class="panel warning m-t-20 m-b-20">
+			{{error}}
+		</div>
+
+		<form *ngIf="step === 0" (ngSubmit)="connect()" ngNativeValidate>
+			<label>Enter your server address</label>
+			<div class="connect-input">
+				<input required placeholder="Server endpoint" type="text" [(ngModel)]="connection.endpoint"
+					name="endpoint">
+			</div>
+
+			<button>Continue <i class="feather-arrow-right"></i></button>
+		</form>
+
+
+		<form *ngIf="step === 1" (ngSubmit)="onLogin()" ngNativeValidate>
+			<div class="connect-input">
+				<input required placeholder="Email " type="email" [(ngModel)]="user.email" name="email">
+			</div>
+
+			<div class="connect-input">
+				<input required placeholder="Password" type="password" [(ngModel)]="user.password" name="key">
+			</div>
+			<button>Login <i class="feather-arrow-right"></i></button>
+		</form>
+	</div>
+</div>
