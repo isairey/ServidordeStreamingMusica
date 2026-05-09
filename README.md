@@ -151,7 +151,7 @@ auddly/
 ## 1️⃣ Clonar el repositorio
 
 ```bash
-git clone https://github.com/Wellenline/auddly.git
+git clone https://github.com/isairey/ServidordeStreamingMusica.git
 ```
 
 ---
@@ -159,7 +159,7 @@ git clone https://github.com/Wellenline/auddly.git
 ## 2️⃣ Entrar al proyecto
 
 ```bash
-cd auddly
+cd ServidordeStreamingMusica
 ```
 
 ---
